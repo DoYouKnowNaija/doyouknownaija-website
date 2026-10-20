@@ -1,12 +1,113 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#087a39">
 <title>Do You Know Naija? | Coming Soon</title>
-<meta name="description" content="Do You Know Naija? — Know Naija. Play Naija. Something exciting is coming.">
+<meta name="description" content="Do You Know Naija? Know Naija. Play Naija. Test your knowledge while we get ready to launch.">
 <style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#021b10;color:#fff}body{min-height:100svh;display:grid;place-items:center;overflow-x:hidden}.bg{position:fixed;inset:0;background:linear-gradient(rgba(0,28,16,.55),rgba(0,18,10,.76)),url('background.png') center/cover no-repeat;filter:saturate(.95);transform:scale(1.02)}.bg:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,rgba(0,255,114,.08),transparent 38%),linear-gradient(to bottom,rgba(0,0,0,.05),rgba(0,0,0,.34))}.wrap{position:relative;z-index:1;width:min(960px,92vw);text-align:center;padding:38px 18px 44px;text-shadow:0 3px 16px rgba(0,0,0,.75)}.logo{display:block;width:min(720px,88vw);height:auto;margin:0 auto 10px;filter:drop-shadow(0 12px 28px rgba(0,0,0,.55))}.tag{font-size:clamp(1.05rem,2.2vw,1.65rem);font-weight:800;letter-spacing:.01em;margin:4px 0 30px}.eyebrow{font-size:clamp(1.55rem,4.3vw,3.25rem);font-weight:950;font-style:italic;line-height:1.02;text-transform:uppercase;margin:0}.eyebrow span{display:block;color:#ffd43b;font-size:1.18em;margin-top:3px}.copy{font-size:clamp(1rem,2vw,1.35rem);line-height:1.45;max-width:720px;margin:24px auto;color:#f4f4f4}.soon{display:inline-block;margin-top:5px;padding:13px 38px;border:2px solid #ffc947;border-radius:999px;color:#ffd15a;background:rgba(0,0,0,.46);font-weight:900;letter-spacing:.3em;font-size:clamp(.82rem,1.7vw,1.08rem);box-shadow:0 0 22px rgba(255,190,46,.25),inset 0 0 12px rgba(255,190,46,.08)}.footer{margin-top:24px;font-size:.76rem;letter-spacing:.09em;color:rgba(255,255,255,.65)}
-@media(max-width:600px){.wrap{padding:28px 14px}.logo{width:96vw;margin-bottom:8px}.tag{margin-bottom:28px}.copy{max-width:330px;margin-top:20px}.soon{padding:12px 25px;letter-spacing:.22em}.bg{background-position:center}}
+:root{--g:#087a39;--g2:#10a84d;--lime:#b6df22;--ink:#10261b;--muted:#5d7065;--line:#dbe9df;--red:#c93e38}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#eef8f0}
+button{font:inherit}
+.hero{position:relative;overflow:hidden;min-height:100svh;background:
+radial-gradient(circle at 12% 8%,rgba(255,220,122,.34),transparent 23rem),
+linear-gradient(135deg,#f9fff9 0%,#edf9f1 54%,#d8f2e1 100%)}
+.hero:before{content:"";position:absolute;inset:0 0 0 auto;width:34%;background:
+linear-gradient(90deg,#edf9f1 0%,rgba(237,249,241,.15) 38%,rgba(237,249,241,0) 100%),
+url("naija-scenery.jpg") center/cover no-repeat;opacity:.95}
+.hero:after{content:"";position:absolute;left:-8%;right:-8%;bottom:-70px;height:170px;background:#fff;border-radius:50% 50% 0 0/30% 30% 0 0;opacity:.92}
+.shell{position:relative;z-index:2;width:min(1180px,92%);margin:auto;padding:44px 0 150px;display:grid;grid-template-columns:minmax(0,1.03fr) minmax(350px,.97fr);gap:46px;align-items:center}
+.top-pill{position:absolute;z-index:3;top:20px;right:24px;background:rgba(255,255,255,.92);border:1px solid rgba(8,122,57,.16);border-radius:999px;padding:9px 14px;font-size:.75rem;font-weight:900;letter-spacing:.09em;color:var(--g);box-shadow:0 8px 25px rgba(10,70,35,.08)}
+.logo{display:block;width:min(470px,88%);height:auto;margin-bottom:22px}
+.kicker{margin:0 0 9px;font-weight:950;letter-spacing:.04em;font-size:clamp(1.05rem,2vw,1.65rem);color:var(--g)}
+h1{font-size:clamp(2.45rem,5vw,4.9rem);line-height:.97;letter-spacing:-.055em;margin:0 0 20px;max-width:700px}
+h1 em{font-style:normal;color:var(--g2)}
+.lead{font-size:clamp(1rem,1.5vw,1.22rem);line-height:1.65;color:#354b3f;max-width:600px;margin:0 0 26px}
+.tag{font-weight:900;letter-spacing:.18em;color:var(--g);font-size:.83rem;margin:0 0 24px}
+.actions{display:flex;flex-wrap:wrap;gap:11px}
+.btn{min-height:51px;border:0;border-radius:999px;padding:0 22px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.18s transform,.18s box-shadow}
+.btn:hover{transform:translateY(-2px)} .btn:focus-visible,.option:focus-visible{outline:3px solid #f2bf25;outline-offset:3px}
+.primary{background:linear-gradient(135deg,var(--g2),var(--g));color:white;box-shadow:0 11px 26px rgba(8,122,57,.23)}
+.secondary{background:rgba(255,255,255,.92);color:var(--g);border:1px solid rgba(8,122,57,.19)}
+.player{margin-top:17px;max-width:535px;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);border:1px solid rgba(8,122,57,.13);border-radius:17px;padding:12px 15px;box-shadow:0 12px 35px rgba(10,70,35,.07)}
+.player-row{display:flex;align-items:center;gap:12px}.eq{height:22px;display:flex;gap:3px;align-items:flex-end}.eq i{display:block;width:3px;height:6px;background:var(--g);border-radius:3px}
+.playing .eq i{animation:eq .65s ease-in-out infinite alternate}.playing .eq i:nth-child(2){animation-delay:.12s}.playing .eq i:nth-child(3){animation-delay:.24s}.playing .eq i:nth-child(4){animation-delay:.36s}
+@keyframes eq{to{height:21px}}
+.meta{flex:1;min-width:0}.song{font-size:.9rem;font-weight:900}.time{font-size:.76rem;color:var(--muted);margin-top:2px;font-variant-numeric:tabular-nums}
+.track{height:5px;background:#dce9df;border-radius:99px;overflow:hidden;margin-top:8px}.track span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g2),var(--lime))}
+.quiz{background:rgba(255,255,255,.96);border:1px solid rgba(8,122,57,.12);border-radius:28px;padding:27px;box-shadow:0 22px 65px rgba(9,70,35,.17);min-width:0}
+.quiz-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:18px}
+.level{border-radius:999px;padding:7px 10px;background:#e8f7ec;color:var(--g);font-size:.72rem;font-weight:950;letter-spacing:.06em}.timer{font-weight:950;color:var(--g);font-variant-numeric:tabular-nums}.timer.low{color:var(--red)}
+.question{font-size:clamp(1.22rem,2.2vw,1.7rem);line-height:1.28;font-weight:950;margin:0 0 19px}
+.options{display:grid;gap:10px}.option{width:100%;min-height:51px;text-align:left;border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 14px;font-weight:800;color:#20372a;cursor:pointer}.option:hover:not(:disabled){background:#f1fbf4;border-color:#4ebc74}.option:disabled{cursor:default}.option.correct{background:#e4f7e9;border-color:#43aa65;color:#115f2e}.option.wrong{background:#fdebea;border-color:#d96863;color:#872a25}
+.feedback{display:none;margin-top:15px;padding:14px 15px;border-radius:14px;line-height:1.45}.feedback.show{display:block}.feedback.good{background:#e7f8eb;color:#155f30}.feedback.bad{background:#fff0df;color:#76470c}.feedback strong{display:block;margin-bottom:4px}.next{display:none;width:100%;margin-top:13px}.next.show{display:flex}
+.strip{position:absolute;z-index:4;left:50%;bottom:25px;transform:translateX(-50%);width:min(1080px,92%);display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.cat{background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border:1px solid rgba(8,122,57,.13);border-radius:999px;padding:8px 12px;font-size:.75rem;font-weight:850;color:#385247}
+@media(max-width:850px){.hero:before{width:100%;opacity:.16}.shell{grid-template-columns:1fr;gap:29px;padding:76px 0 155px}.intro{text-align:center}.logo{margin:0 auto 18px}.lead{margin-left:auto;margin-right:auto}.actions{justify-content:center}.player{margin:17px auto 0;text-align:left}.quiz{width:min(620px,100%);margin:auto}.top-pill{top:14px;right:14px}}
+@media(max-width:480px){.shell{width:91%;padding-top:70px}.logo{width:95%}h1{font-size:2.45rem}.actions{display:grid}.btn{width:100%}.quiz{padding:19px;border-radius:22px}.strip{bottom:16px;max-height:85px;overflow:hidden}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}.playing .eq i{animation:none}}
 </style>
 </head>
-<body><div class="bg" aria-hidden="true"></div><main class="wrap"><img class="logo" src="dykn-logo.png" alt="Do You Know Naija? logo"><div class="tag">Know Naija. Play Naija.</div><h1 class="eyebrow">Something exciting<span>is coming…</span></h1><p class="copy">A new season of knowledge, competition and fun is coming your way.</p><div class="soon">COMING SOON</div><div class="footer">DOYOUKNOWNAIJA.COM</div></main></body></html>
+<body>
+<main class="hero">
+<div class="top-pill">COMING SOON</div>
+<div class="shell">
+<section class="intro">
+<img class="logo" src="dykn-logo.png" alt="Do You Know Naija?">
+<p class="kicker">SOMETHING EXCITING IS COMING…</p>
+<h1>Think you know Naija? <em>Get ready to prove it.</em></h1>
+<p class="lead">A fun, engaging and challenging knowledge game for Nigerians at home and in the diaspora. Here is a little taste while we get ready to launch.</p>
+<p class="tag">KNOW NAIJA. PLAY NAIJA.</p>
+<div class="actions">
+<button class="btn primary" id="tryBtn" type="button">🎮 TRY A QUESTION</button>
+<button class="btn secondary" id="musicBtn" type="button" aria-pressed="false">🎵 PLAY DYKN THEME</button>
+</div>
+<div class="player" id="player">
+<div class="player-row"><div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="meta"><div class="song">DYKN Theme Song</div><div class="time"><span id="cur">0:00</span> / <span id="dur">--:--</span></div><div class="track"><span id="prog"></span></div></div></div>
+<audio id="audio" preload="metadata" src="dykn-theme.mp3"></audio>
+</div>
+</section>
+
+<section class="quiz" id="quiz" aria-labelledby="qText">
+<div class="quiz-head"><span class="level" id="level">😎 NO WAHALA</span><span class="timer" id="timer">20s</span></div>
+<p class="question" id="qText"></p>
+<div class="options" id="options"></div>
+<div class="feedback" id="feedback" aria-live="polite"></div>
+<button class="btn primary next" id="next" type="button">TRY ANOTHER QUESTION →</button>
+</section>
+</div>
+<div class="strip" aria-label="DYKN categories">
+<span class="cat">🏛 Politics & Governance</span><span class="cat">⚽ Sports</span><span class="cat">🎬 Entertainment</span><span class="cat">🥁 Culture</span><span class="cat">🗺 Geography</span><span class="cat">📚 History</span><span class="cat">✈ Tourism</span>
+</div>
+</main>
+<script>
+(()=>{
+const bank=[
+{l:"😎 NO WAHALA",q:"Which Nigerian city is famously known as the “Coal City”?",o:["Jos","Enugu","Ibadan","Kaduna"],c:1,f:"Enugu earned the nickname “Coal City” because coal mining played an important role in the city’s early development."},
+{l:"😎 NO WAHALA",q:"What is the capital city of Nigeria?",o:["Lagos","Abuja","Kano","Port Harcourt"],c:1,f:"Abuja became Nigeria’s federal capital in 1991, replacing Lagos."},
+{l:"😅 SMALL WAHALA",q:"Zuma Rock is located in which Nigerian state?",o:["Niger State","Ogun State","Plateau State","Enugu State"],c:0,f:"Zuma Rock is in Niger State, just north of Abuja, and is one of Nigeria’s best-known natural landmarks."},
+{l:"😅 SMALL WAHALA",q:"Which Nigerian state uses the slogan “Centre of Excellence”?",o:["Edo","Lagos","Cross River","Kwara"],c:1,f:"Lagos State is popularly known by the slogan “Centre of Excellence.”"},
+{l:"🔥 WAHALA PRO MAX",q:"The Northern and Southern Protectorates of Nigeria were amalgamated in which year?",o:["1901","1914","1922","1960"],c:1,f:"The amalgamation took place in 1914 under Governor-General Frederick Lugard."}
+];
+let i=0,left=20,tick=null,done=false;
+const q=document.getElementById("qText"),opts=document.getElementById("options"),fb=document.getElementById("feedback"),next=document.getElementById("next"),timer=document.getElementById("timer"),level=document.getElementById("level");
+function start(){clearInterval(tick);left=20;timer.textContent="20s";timer.classList.remove("low");tick=setInterval(()=>{left--;timer.textContent=left+"s";if(left<=5)timer.classList.add("low");if(left<=0){clearInterval(tick);timeout()}},1000)}
+function render(){done=false;const x=bank[i];level.textContent=x.l;q.textContent=x.q;opts.innerHTML="";fb.className="feedback";fb.innerHTML="";next.classList.remove("show");x.o.forEach((t,n)=>{const b=document.createElement("button");b.type="button";b.className="option";b.textContent=String.fromCharCode(65+n)+". "+t;b.addEventListener("click",()=>answer(n,b));opts.appendChild(b)});start()}
+function lock(){[...opts.children].forEach(b=>b.disabled=true)}
+function answer(n,b){if(done)return;done=true;clearInterval(tick);lock();const x=bank[i];if(n===x.c){b.classList.add("correct");fb.className="feedback show good";fb.innerHTML="<strong>✅ NO WAHALA!</strong>"+x.f}else{b.classList.add("wrong");opts.children[x.c].classList.add("correct");fb.className="feedback show bad";fb.innerHTML="<strong>😅 SMALL WAHALA!</strong>The correct answer is <b>"+x.o[x.c]+"</b>. "+x.f}next.classList.add("show")}
+function timeout(){if(done)return;done=true;lock();const x=bank[i];opts.children[x.c].classList.add("correct");fb.className="feedback show bad";fb.innerHTML="<strong>⏰ TIME UP!</strong>The correct answer is <b>"+x.o[x.c]+"</b>. "+x.f;next.classList.add("show")}
+next.addEventListener("click",()=>{i=(i+1)%bank.length;render();document.getElementById("quiz").scrollIntoView({behavior:"smooth",block:"center"})});
+document.getElementById("tryBtn").addEventListener("click",()=>document.getElementById("quiz").scrollIntoView({behavior:"smooth",block:"center"}));
+const a=document.getElementById("audio"),mb=document.getElementById("musicBtn"),pl=document.getElementById("player"),prog=document.getElementById("prog"),cur=document.getElementById("cur"),dur=document.getElementById("dur");
+const fmt=s=>{if(!Number.isFinite(s))return"--:--";return Math.floor(s/60)+":"+Math.floor(s%60).toString().padStart(2,"0")};
+a.addEventListener("loadedmetadata",()=>dur.textContent=fmt(a.duration));
+a.addEventListener("timeupdate",()=>{cur.textContent=fmt(a.currentTime);prog.style.width=((a.currentTime/(a.duration||1))*100)+"%"});
+a.addEventListener("ended",()=>{mb.textContent="🎵 PLAY DYKN THEME";mb.setAttribute("aria-pressed","false");pl.classList.remove("playing")});
+mb.addEventListener("click",async()=>{if(a.paused){try{await a.play();mb.textContent="⏸ PAUSE THEME";mb.setAttribute("aria-pressed","true");pl.classList.add("playing")}catch(e){mb.textContent="▶ PLAY DYKN THEME"}}else{a.pause();mb.textContent="▶ PLAY DYKN THEME";mb.setAttribute("aria-pressed","false");pl.classList.remove("playing")}});
+render();
+})();
+</script>
+</body>
+</html>

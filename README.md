@@ -1,5 +1,11 @@
-# DYKN Coming Soon
-Temporary landing page for DoYouKnowNaija.com.
+# DYKN Website v0.2
+Interactive Coming Soon build.
 
-## GitHub Pages
-Upload `index.html`, `dykn-logo.png`, and `background.png` to the repository root. Then enable Pages from the repository Settings → Pages and deploy from the main branch/root.
+## Files
+- index.html — responsive page + 20-second teaser quiz + audio controls
+- dykn-logo.png — exact approved DYKN logo asset
+- dykn-theme.mp3 — supplied final theme song
+- naija-scenery.jpg — clean scenic accent derived from the approved bright concept
+
+## Deploy to GitHub Pages
+Upload these four website files to the repository root, replacing index.html and the prior visual assets as needed. Keep the repository's GitHub Pages and custom-domain settings unchanged.
