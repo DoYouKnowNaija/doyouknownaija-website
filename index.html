@@ -14,9 +14,9 @@ button{font:inherit}
 .hero{position:relative;overflow:hidden;min-height:100svh;background:
 radial-gradient(circle at 12% 8%,rgba(255,220,122,.34),transparent 23rem),
 linear-gradient(135deg,#f9fff9 0%,#edf9f1 54%,#d8f2e1 100%)}
-.hero:before{content:"";position:absolute;inset:0 0 0 auto;width:34%;background:
+.hero:before{content:"";position:absolute;inset:0 0 0 auto;width:52%;background:
 linear-gradient(90deg,#edf9f1 0%,rgba(237,249,241,.15) 38%,rgba(237,249,241,0) 100%),
-url("naija-scenery.jpg") center/cover no-repeat;opacity:.95}
+url("naija-scenery.jpg") center/cover no-repeat;opacity:.38}
 .hero:after{content:"";position:absolute;left:-8%;right:-8%;bottom:-70px;height:170px;background:#fff;border-radius:50% 50% 0 0/30% 30% 0 0;opacity:.92}
 .shell{position:relative;z-index:2;width:min(1180px,92%);margin:auto;padding:44px 0 150px;display:grid;grid-template-columns:minmax(0,1.03fr) minmax(350px,.97fr);gap:46px;align-items:center}
 .top-pill{position:absolute;z-index:3;top:20px;right:24px;background:rgba(255,255,255,.92);border:1px solid rgba(8,122,57,.16);border-radius:999px;padding:9px 14px;font-size:.75rem;font-weight:900;letter-spacing:.09em;color:var(--g);box-shadow:0 8px 25px rgba(10,70,35,.08)}
@@ -84,21 +84,34 @@ h1 em{font-style:normal;color:var(--g2)}
 </main>
 <script>
 (()=>{
-const bank=[
+const bank={no:[
 {l:"😎 NO WAHALA",q:"Which Nigerian city is famously known as the “Coal City”?",o:["Jos","Enugu","Ibadan","Kaduna"],c:1,f:"Enugu earned the nickname “Coal City” because coal mining played an important role in the city’s early development."},
 {l:"😎 NO WAHALA",q:"What is the capital city of Nigeria?",o:["Lagos","Abuja","Kano","Port Harcourt"],c:1,f:"Abuja became Nigeria’s federal capital in 1991, replacing Lagos."},
-{l:"😅 SMALL WAHALA",q:"Zuma Rock is located in which Nigerian state?",o:["Niger State","Ogun State","Plateau State","Enugu State"],c:0,f:"Zuma Rock is in Niger State, just north of Abuja, and is one of Nigeria’s best-known natural landmarks."},
-{l:"😅 SMALL WAHALA",q:"Which Nigerian state uses the slogan “Centre of Excellence”?",o:["Edo","Lagos","Cross River","Kwara"],c:1,f:"Lagos State is popularly known by the slogan “Centre of Excellence.”"},
-{l:"🔥 WAHALA PRO MAX",q:"The Northern and Southern Protectorates of Nigeria were amalgamated in which year?",o:["1901","1914","1922","1960"],c:1,f:"The amalgamation took place in 1914 under Governor-General Frederick Lugard."}
-];
-let i=0,left=20,tick=null,done=false;
+{l:"😎 NO WAHALA",q:"Which colours appear on Nigeria’s national flag?",o:["Green and White","Green and Gold","White and Blue","Green, White and Red"],c:0,f:"Nigeria’s flag has three vertical bands: green, white and green."},
+{l:"😎 NO WAHALA",q:"Which currency is used in Nigeria?",o:["Cedi","Naira","Shilling","Rand"],c:1,f:"Nigeria’s currency is the naira, subdivided into 100 kobo."},
+{l:"😎 NO WAHALA",q:"Which Nigerian city hosts the famous annual Calabar Carnival?",o:["Uyo","Calabar","Abeokuta","Owerri"],c:1,f:"Calabar hosts the famous annual carnival, one of Nigeria’s major tourism events."}],small:[
+{l:"😅 SMALL WAHALA",q:"Zuma Rock is located in which Nigerian state?",o:["Niger State","Ogun State","Plateau State","Enugu State"],c:0,f:"Zuma Rock is in Niger State, just north of Abuja."},
+{l:"😅 SMALL WAHALA",q:"Which river meets the River Niger at Lokoja?",o:["River Kaduna","River Benue","River Ogun","Cross River"],c:1,f:"The Rivers Niger and Benue meet at Lokoja."},
+{l:"😅 SMALL WAHALA",q:"Nigeria’s Independence Day is celebrated on which date?",o:["May 29","June 12","October 1","October 15"],c:2,f:"Nigeria became independent from Britain on 1 October 1960."},
+{l:"😅 SMALL WAHALA",q:"Which Nigerian author wrote “Things Fall Apart”?",o:["Wole Soyinka","Chimamanda Ngozi Adichie","Chinua Achebe","Ben Okri"],c:2,f:"Chinua Achebe’s “Things Fall Apart” was first published in 1958."},
+{l:"😅 SMALL WAHALA",q:"Which city was Nigeria’s federal capital immediately before Abuja?",o:["Kaduna","Lagos","Ibadan","Enugu"],c:1,f:"Lagos was Nigeria’s federal capital until Abuja formally became the capital in 1991."}],pro:[
+{l:"🔥 WAHALA PRO MAX",q:"The Northern and Southern Protectorates of Nigeria were amalgamated in which year?",o:["1901","1914","1922","1960"],c:1,f:"The amalgamation took place in 1914 under Frederick Lugard."},
+{l:"🔥 WAHALA PRO MAX",q:"Who was Nigeria’s first indigenous Governor-General?",o:["Nnamdi Azikiwe","Tafawa Balewa","Ahmadu Bello","Obafemi Awolowo"],c:0,f:"Nnamdi Azikiwe became Nigeria’s first indigenous Governor-General in 1960."},
+{l:"🔥 WAHALA PRO MAX",q:"Nigeria’s first military coup took place in which year?",o:["1963","1966","1967","1975"],c:1,f:"Nigeria’s first military coup took place in January 1966."},
+{l:"🔥 WAHALA PRO MAX",q:"Which Nigerian became the first African Nobel laureate in Literature?",o:["Chinua Achebe","Wole Soyinka","Ben Okri","Cyprian Ekwensi"],c:1,f:"Wole Soyinka received the Nobel Prize in Literature in 1986."},
+{l:"🔥 WAHALA PRO MAX",q:"Who moved the motion for Nigeria’s independence in 1953?",o:["Anthony Enahoro","Nnamdi Azikiwe","Tafawa Balewa","Ahmadu Bello"],c:0,f:"Anthony Enahoro moved the historic motion for self-government in 1953."}]};
+const pick=a=>a[Math.floor(Math.random()*a.length)];let round=[pick(bank.no),pick(bank.small),pick(bank.pro)],i=0,left=20,tick=null,done=false;
 const q=document.getElementById("qText"),opts=document.getElementById("options"),fb=document.getElementById("feedback"),next=document.getElementById("next"),timer=document.getElementById("timer"),level=document.getElementById("level");
 function start(){clearInterval(tick);left=20;timer.textContent="20s";timer.classList.remove("low");tick=setInterval(()=>{left--;timer.textContent=left+"s";if(left<=5)timer.classList.add("low");if(left<=0){clearInterval(tick);timeout()}},1000)}
-function render(){done=false;const x=bank[i];level.textContent=x.l;q.textContent=x.q;opts.innerHTML="";fb.className="feedback";fb.innerHTML="";next.classList.remove("show");x.o.forEach((t,n)=>{const b=document.createElement("button");b.type="button";b.className="option";b.textContent=String.fromCharCode(65+n)+". "+t;b.addEventListener("click",()=>answer(n,b));opts.appendChild(b)});start()}
-function lock(){[...opts.children].forEach(b=>b.disabled=true)}
-function answer(n,b){if(done)return;done=true;clearInterval(tick);lock();const x=bank[i];if(n===x.c){b.classList.add("correct");fb.className="feedback show good";fb.innerHTML="<strong>✅ NO WAHALA!</strong>"+x.f}else{b.classList.add("wrong");opts.children[x.c].classList.add("correct");fb.className="feedback show bad";fb.innerHTML="<strong>😅 SMALL WAHALA!</strong>The correct answer is <b>"+x.o[x.c]+"</b>. "+x.f}next.classList.add("show")}
-function timeout(){if(done)return;done=true;lock();const x=bank[i];opts.children[x.c].classList.add("correct");fb.className="feedback show bad";fb.innerHTML="<strong>⏰ TIME UP!</strong>The correct answer is <b>"+x.o[x.c]+"</b>. "+x.f;next.classList.add("show")}
-next.addEventListener("click",()=>{i=(i+1)%bank.length;render();document.getElementById("quiz").scrollIntoView({behavior:"smooth",block:"center"})});
+function render(){done=false;const x=round[i];level.textContent=x.l;q.textContent=x.q;opts.innerHTML="";fb.className="feedback";next.classList.remove("show");x.o.forEach((t,n)=>{const z=document.createElement("button");z.type="button";z.className="option";z.textContent=String.fromCharCode(65+n)+". "+t;z.onclick=()=>answer(n,z);opts.appendChild(z)});start()}
+function lock(){[...opts.children].forEach(z=>z.disabled=true)}
+function nav(){next.textContent=i===2?"SEE WHAT’S COMING →":"NEXT QUESTION →";next.classList.add("show");next.onclick=()=>{if(i===2)finale();else{i++;render()}}}
+function answer(n,z){if(done)return;done=true;clearInterval(tick);lock();const x=round[i];if(n===x.c){z.classList.add("correct");fb.className="feedback show good";fb.innerHTML="<strong>✅ NO WAHALA!</strong>"+x.f}else{z.classList.add("wrong");opts.children[x.c].classList.add("correct");fb.className="feedback show bad";fb.innerHTML="<strong>😅 YOU LEARN AM TODAY!</strong>The correct answer is <b>"+x.o[x.c]+"</b>. "+x.f}nav()}
+function timeout(){if(done)return;done=true;lock();const x=round[i];opts.children[x.c].classList.add("correct");fb.className="feedback show bad";fb.innerHTML="<strong>⏰ TIME UP!</strong>The correct answer is <b>"+x.o[x.c]+"</b>. "+x.f;nav()}
+function finale(){clearInterval(tick);level.textContent="🇳🇬 YOUR DYKN WARM-UP IS COMPLETE";timer.textContent="";q.innerHTML="The real game is coming soon. <span style='color:var(--g)'>Are you ready for Naija?</span>";opts.innerHTML="";fb.className="feedback show good";fb.innerHTML="<strong>🔥 THIS WAS JUST THE WARM-UP.</strong>More questions. More categories. More wahala. More bragging rights.<br><br><b>Share DoYouKnowNaija.com with your friends and family and tell them to start preparing — because when DYKN launches, knowing Naija is what will count!</b>";next.textContent="SHARE DYKN ↗";next.classList.add("show");next.onclick=async()=>{const d={title:"Do You Know Naija?",text:"Think you know Naija? 😎🔥 Try the DYKN warm-up and start preparing for the real game!",url:"https://doyouknownaija.com"};if(navigator.share){try{await navigator.share(d)}catch(e){}}else{window.prompt("Copy and share this link with friends and family:","https://doyouknownaija.com")}}}
+document.getElementById("tryBtn").onclick=()=>document.getElementById("quiz").scrollIntoView({behavior:"smooth",block:"center"});
+const aud=document.getElementById("audio"),mb=document.getElementById("musicBtn"),pl=document.getElementById("player"),prog=document.getElementById("prog"),cur=document.getElementById("cur"),dur=document.getElementById("dur");const fmt=s=>!Number.isFinite(s)?"--:--":Math.floor(s/60)+":"+Math.floor(s%60).toString().padStart(2,"0");
+aud.onloadedmetadata=()=>dur.textContent=fmt(aud.duration);aud.ontimeupdate=()=>{cur.textContent=fmt(aud.currentTime);prog.style.width=((aud.currentTime/(aud.duration||1))*100)+"%"};aud.onended=()=>{mb.textContent="🎵 PLAY DYKN THEME";pl.classList.remove("playing")};mb.onclick=async()=>{if(aud.paused){await aud.play();mb.textContent="⏸ PAUSE THEME";pl.classList.add("playing")}else{aud.pause();mb.textContent="▶ PLAY DYKN THEME";pl.classList.remove("playing")}};render();document.getElementById("quiz").scrollIntoView({behavior:"smooth",block:"center"})});
 document.getElementById("tryBtn").addEventListener("click",()=>document.getElementById("quiz").scrollIntoView({behavior:"smooth",block:"center"}));
 const a=document.getElementById("audio"),mb=document.getElementById("musicBtn"),pl=document.getElementById("player"),prog=document.getElementById("prog"),cur=document.getElementById("cur"),dur=document.getElementById("dur");
 const fmt=s=>{if(!Number.isFinite(s))return"--:--";return Math.floor(s/60)+":"+Math.floor(s%60).toString().padStart(2,"0")};
